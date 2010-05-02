@@ -76,3 +76,10 @@ map <leader>s :call StripWhitespace()<CR>
 " markdown support
 au BufRead,BufNewFile *.md set filetype=mkd
 
+" ruby extensions
+au BufRead,BufNewFile Capfile set filetype=ruby
+au BufRead,BufNewFile Gemfile set filetype=ruby
+
+" ctags
+set tags+=/opt/local/etc/tags/ruby,/opt/local/etc/tags/gems
+
