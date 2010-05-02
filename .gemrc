@@ -1,0 +1,3 @@
+# Don't install documentation by default.
+gem:  --no-rdoc --no-ri
+
