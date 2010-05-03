@@ -52,6 +52,7 @@ let mapleader = ","
 " NERDTree settings
 map <leader>d :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
+let NERDTreeIgnore=['^\.DS_Store$', '\~$']
 
 " zen coding preferences
 let g:user_zen_settings = {'indentation' : '  ' }
