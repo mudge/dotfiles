@@ -72,16 +72,17 @@ endfunction
 map <leader>s :call StripWhitespace()<CR>
 
 " markdown support
-au BufRead,BufNewFile *.md set filetype=mkd
+au BufRead,BufNewFile *.md setl filetype=mkd
 
 " ruby extensions
-au BufRead,BufNewFile Capfile,Gemfile set filetype=ruby
-au BufRead,BufNewFile .bundle/config,.gemrc set filetype=yaml
+au BufRead,BufNewFile Capfile,Gemfile setl filetype=ruby
+au BufRead,BufNewFile .bundle/config,.gemrc setl filetype=yaml
+au BufRead,BufNewFile templates/*.html setl filetype=htmldjango
 
 " python settings
-au FileType python set sw=4 sts=4
+au FileType python setl sw=4 sts=4
 
 " ctags
-au FileType ruby setlocal tags+=/opt/local/etc/tags/ruby,/opt/local/etc/tags/gems
-au FileType python setlocal tags+=/opt/local/etc/tags/django
+au FileType ruby setl tags+=/opt/local/etc/tags/ruby,/opt/local/etc/tags/gems
+au FileType python setl tags+=/opt/local/etc/tags/django
 
