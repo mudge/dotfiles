@@ -1,3 +1,4 @@
 # Don't install documentation by default.
+# c.f. http://docs.rubygems.org/read/chapter/11
 gem:  --no-rdoc --no-ri
 

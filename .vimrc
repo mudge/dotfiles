@@ -65,9 +65,6 @@ set laststatus=2
 au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
                          \ exe "normal g'\"" | endif
 
-" javascript indentation is horrible by default
-autocmd FileType javascript setlocal nocindent
-
 " strip trailing whitespace
 function! StripWhitespace()
     exec ':%s/ \+$//gc'
@@ -78,10 +75,13 @@ map <leader>s :call StripWhitespace()<CR>
 au BufRead,BufNewFile *.md set filetype=mkd
 
 " ruby extensions
-au BufRead,BufNewFile Capfile set filetype=ruby
-au BufRead,BufNewFile Gemfile set filetype=ruby
+au BufRead,BufNewFile Capfile,Gemfile set filetype=ruby
+au BufRead,BufNewFile .bundle/config,.gemrc set filetype=yaml
+
+" python settings
+au FileType python set sw=4 sts=4
 
 " ctags
-autocmd FileType ruby setlocal tags+=/opt/local/etc/tags/ruby,/opt/local/etc/tags/gems
-autocmd FileType python setlocal tags+=/opt/local/etc/tags/django
+au FileType ruby setlocal tags+=/opt/local/etc/tags/ruby,/opt/local/etc/tags/gems
+au FileType python setlocal tags+=/opt/local/etc/tags/django
 
