@@ -81,5 +81,6 @@ au BufRead,BufNewFile Capfile set filetype=ruby
 au BufRead,BufNewFile Gemfile set filetype=ruby
 
 " ctags
-set tags+=/opt/local/etc/tags/ruby,/opt/local/etc/tags/gems
+autocmd FileType ruby setlocal tags+=/opt/local/etc/tags/ruby,/opt/local/etc/tags/gems
+autocmd FileType python setlocal tags+=/opt/local/etc/tags/django
 
