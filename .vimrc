@@ -71,18 +71,19 @@ function! StripWhitespace()
 endfunction
 map <leader>s :call StripWhitespace()<CR>
 
-" markdown support
-au BufRead,BufNewFile *.md setl filetype=mkd
+" detect filetypes
+au BufRead,BufNewFile *.md setf mkd
+au BufRead,BufNewFile {Cap,Gem}file setf ruby
+au BufRead,BufNewFile */.bundle/config,.gemrc setf yaml
+au BufRead,BufNewFile */templates/*.html setf htmldjango
 
-" ruby extensions
-au BufRead,BufNewFile Capfile,Gemfile setl filetype=ruby
-au BufRead,BufNewFile .bundle/config,.gemrc setl filetype=yaml
-au BufRead,BufNewFile templates/*.html setl filetype=htmldjango
-
-" python settings
+" python indentation
 au FileType python setl sw=4 sts=4
 
 " ctags
 au FileType ruby setl tags+=/opt/local/etc/tags/ruby,/opt/local/etc/tags/gems
 au FileType python setl tags+=/opt/local/etc/tags/django
+
+" command-t mappings
+map <leader>r :CommandTFlush<CR>
 
