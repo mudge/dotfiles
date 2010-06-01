@@ -87,3 +87,7 @@ au FileType python setl tags+=/opt/local/etc/tags/django
 " command-t mappings
 map <leader>r :CommandTFlush<CR>
 
+" rsense
+let g:rsenseHome = "/opt/local/rsense"
+let g:rsenseUseOmniFunc = 1
+
