@@ -74,8 +74,8 @@ map <leader>s :call StripWhitespace()<CR>
 " detect filetypes
 au BufRead,BufNewFile *.md setf mkd
 au BufRead,BufNewFile {Cap,Gem}file setf ruby
-au BufRead,BufNewFile */.bundle/config,.gemrc setf yaml
-au BufRead,BufNewFile */templates/*.html setf htmldjango
+au BufRead,BufNewFile .bundle/config,.gemrc setf yaml
+au BufRead,BufNewFile templates/*.html setf htmldjango
 
 " python indentation
 au FileType python setl sw=4 sts=4

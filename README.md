@@ -11,7 +11,10 @@ so thanks to him for providing such an invaluable resource.
 * Tim Pope's [endwise][], [fugitive][] and [rails.vim][];
 * Wincent Colaiuta's [Command-T][];
 * Tom Link's [tComment][];
-* Yasuhiro Matsmoto's [ZenCoding.vim][].
+* Yasuhiro Matsmoto's [ZenCoding.vim][];
+* Craig Emery's [AutoTag][];
+* Takeshi Nishida's [AutoComplPop][];
+* Tomohiro Matsuyama's [RSense][].
 
   [NERDTree]: http://www.vim.org/scripts/script.php?script_id=1658
   [endwise]: http://www.vim.org/scripts/script.php?script_id=2386
@@ -20,4 +23,7 @@ so thanks to him for providing such an invaluable resource.
   [Command-T]: http://www.vim.org/scripts/script.php?script_id=3025
   [tComment]: http://www.vim.org/scripts/script.php?script_id=1173
   [ZenCoding.vim]: http://www.vim.org/scripts/script.php?script_id=2981
+  [AutoTag]: http://www.vim.org/scripts/script.php?script_id=1343
+  [AutoComplPop]: http://www.vim.org/scripts/script.php?script_id=1879
+  [RSense]: http://cx4a.org/software/rsense/
 
