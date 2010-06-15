@@ -82,7 +82,7 @@ au BufRead,BufNewFile templates/*.html set ft=htmldjango
 au FileType python setl sw=4 sts=4
 
 " ctags
-au FileType ruby setl tags+=/opt/local/etc/tags/ruby,/opt/local/etc/tags/gems
+au FileType ruby setl tags+=/opt/local/etc/tags/ruby,/opt/local/etc/tags/gems iskeyword+=?,!
 au FileType python setl tags+=/opt/local/etc/tags/django
 
 " command-t mappings
