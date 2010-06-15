@@ -37,7 +37,6 @@ set nostartofline
 set cursorline
 set showmatch
 set virtualedit=block
-set textwidth=80
 
 " searching
 set hlsearch
@@ -72,10 +71,12 @@ endfunction
 map <leader>s :call StripWhitespace()<CR>
 
 " detect filetypes
-au BufRead,BufNewFile *.md setf mkd
-au BufRead,BufNewFile {Cap,Gem}file setf ruby
-au BufRead,BufNewFile .bundle/config,.gemrc setf yaml
-au BufRead,BufNewFile templates/*.html setf htmldjango
+" use set ft= instead of setf to ensure these
+" filetypes take precedence.
+au BufRead,BufNewFile *.md set ft=mkd
+au BufRead,BufNewFile {Cap,Gem}file set ft=ruby
+au BufRead,BufNewFile .bundle/config,.gemrc set ft=yaml
+au BufRead,BufNewFile templates/*.html set ft=htmldjango
 
 " python indentation
 au FileType python setl sw=4 sts=4
@@ -86,8 +87,4 @@ au FileType python setl tags+=/opt/local/etc/tags/django
 
 " command-t mappings
 map <leader>r :CommandTFlush<CR>
-
-" rsense
-let g:rsenseHome = "/opt/local/rsense"
-let g:rsenseUseOmniFunc = 1
 

@@ -7,23 +7,22 @@ so thanks to him for providing such an invaluable resource.
 
 ## Vim Plugins
 
-* Marty Grenfell's [NERDTree][];
-* Tim Pope's [endwise][], [fugitive][] and [rails.vim][];
 * Wincent Colaiuta's [Command-T][];
+* Craig Emery's [AutoTag][];
+* Benji Fisher's [matchit][];
+* Marty Grenfell's [NERDTree][];
 * Tom Link's [tComment][];
 * Yasuhiro Matsmoto's [ZenCoding.vim][];
-* Craig Emery's [AutoTag][];
-* Takeshi Nishida's [AutoComplPop][];
-* Tomohiro Matsuyama's [RSense][].
+* Tim Pope's [endwise][], [fugitive][], [rails.vim][] and [surround.vim][].
 
-  [NERDTree]: http://www.vim.org/scripts/script.php?script_id=1658
-  [endwise]: http://www.vim.org/scripts/script.php?script_id=2386
-  [rails.vim]: http://www.vim.org/scripts/script.php?script_id=1567
-  [fugitive]: http://www.vim.org/scripts/script.php?script_id=2975
-  [Command-T]: http://www.vim.org/scripts/script.php?script_id=3025
-  [tComment]: http://www.vim.org/scripts/script.php?script_id=1173
-  [ZenCoding.vim]: http://www.vim.org/scripts/script.php?script_id=2981
   [AutoTag]: http://www.vim.org/scripts/script.php?script_id=1343
-  [AutoComplPop]: http://www.vim.org/scripts/script.php?script_id=1879
-  [RSense]: http://cx4a.org/software/rsense/
+  [Command-T]: http://www.vim.org/scripts/script.php?script_id=3025
+  [NERDTree]: http://www.vim.org/scripts/script.php?script_id=1658
+  [ZenCoding.vim]: http://www.vim.org/scripts/script.php?script_id=2981
+  [endwise]: http://www.vim.org/scripts/script.php?script_id=2386
+  [fugitive]: http://www.vim.org/scripts/script.php?script_id=2975
+  [matchit]: http://www.vim.org/scripts/script.php?script_id=39
+  [rails.vim]: http://www.vim.org/scripts/script.php?script_id=1567
+  [surround.vim]: http://www.vim.org/scripts/script.php?script_id=1697
+  [tComment]: http://www.vim.org/scripts/script.php?script_id=1173
 
