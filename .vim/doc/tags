@@ -109,7 +109,7 @@ b:match_wholeBR	matchit.txt	/*b:match_wholeBR*
 b:match_word	matchit.txt	/*b:match_word*
 b:match_words	matchit.txt	/*b:match_words*
 command-t	command-t.txt	/*command-t*
-command-t-author	command-t.txt	/*command-t-author*
+command-t-authors	command-t.txt	/*command-t-authors*
 command-t-commands	command-t.txt	/*command-t-commands*
 command-t-contents	command-t.txt	/*command-t-contents*
 command-t-donations	command-t.txt	/*command-t-donations*
