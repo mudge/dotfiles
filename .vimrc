@@ -57,7 +57,7 @@ let NERDTreeIgnore=['^\.DS_Store$', '\~$']
 let g:user_zen_settings = {'indentation' : '  ' }
 
 " fugitive settings
-set statusline=%{fugitive#statusline()}
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 set laststatus=2
 
 " jump to last opened position
