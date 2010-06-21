@@ -13,7 +13,7 @@ so thanks to him for providing such an invaluable resource.
 * Marty Grenfell's [NERDTree][];
 * Tom Link's [tComment][];
 * Yasuhiro Matsmoto's [ZenCoding.vim][];
-* Tim Pope's [endwise][], [fugitive][], [rails.vim][] and [surround.vim][].
+* Tim Pope's [endwise][], [fugitive][], [rails.vim][], [repeat.vim][] and [surround.vim][].
 
 ## Vim Color Schemes
 
@@ -28,6 +28,7 @@ so thanks to him for providing such an invaluable resource.
   [MacVim]: http://repo.or.cz/w/MacVim.git/blob/HEAD:/runtime/colors/macvim.vim
   [matchit]: http://www.vim.org/scripts/script.php?script_id=39
   [rails.vim]: http://www.vim.org/scripts/script.php?script_id=1567
+  [repeat.vim]: http://www.vim.org/scripts/script.php?script_id=2136
   [surround.vim]: http://www.vim.org/scripts/script.php?script_id=1697
   [tComment]: http://www.vim.org/scripts/script.php?script_id=1173
 
