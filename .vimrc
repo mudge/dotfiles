@@ -1,8 +1,14 @@
+" filetype plugin (force toggle for pathogen)
+filetype off
+
+" use pathogen for vim plugins
+call pathogen#runtime_append_all_bundles()
+
+filetype plugin indent on
+
 " vim-only mode.
 set nocompatible
 
-" filetype plugin
-filetype plugin indent on
 
 " highlight trailing whitespace
 set list listchars=trail:.,tab:>.
@@ -42,19 +48,16 @@ set virtualedit=block
 set hlsearch
 set incsearch
 
-" syntax highlighting
-syntax on
-
 " leader
 let mapleader = ","
+
+" syntax highlighting
+syntax on
 
 " NERDTree settings
 map <leader>d :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['^\.DS_Store$', '\~$']
-
-" zen coding preferences
-let g:user_zen_settings = {'indentation' : '  ' }
 
 " fugitive settings
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
@@ -87,4 +90,5 @@ au FileType python setl tags+=/opt/local/etc/tags/django
 
 " command-t mappings
 map <leader>r :CommandTFlush<CR>
+map <leader>t :CommandT<CR>
 
