@@ -1,6 +1,3 @@
-" filetype plugin (force toggle for pathogen)
-filetype off
-
 " use pathogen for vim plugins
 call pathogen#runtime_append_all_bundles()
 
@@ -9,14 +6,25 @@ filetype plugin indent on
 " vim-only mode.
 set nocompatible
 
+" allow unsaved changes in buffers
+set hidden
 
 " highlight trailing whitespace
 set list listchars=trail:.,tab:>.
 
 " backups
 set nobackup
-set nowritebackup
-set noswapfile
+
+" swapfiles
+set directory=~/.vim/swapfiles
+
+" persistent undo
+try
+  set undodir=~/.vim/undodir
+  set undofile
+catch /Unknown option/
+  " For versions of Vim prior to 7.3.
+endtry
 
 " 2 spaces for tabs.
 set autoindent
@@ -31,7 +39,7 @@ set nosmarttab
 set backspace=2
 
 " use ack instead of grep
-set grepprg=/opt/local/ack/bin/ack
+set grepprg=ack
 set grepformat=%f:%l:%m
 
 " ui
