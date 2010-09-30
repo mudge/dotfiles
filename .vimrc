@@ -18,10 +18,12 @@ set nobackup
 " swapfiles
 set directory=~/.vim/swapfiles
 
-" persistent undo
 try
+  " persistent undo
   set undodir=~/.vim/undodir
   set undofile
+
+  set colorcolumn=85
 catch /Unknown option/
   " For versions of Vim prior to 7.3.
 endtry
@@ -100,3 +102,4 @@ au FileType python setl tags+=/opt/local/etc/tags/django
 map <leader>r :CommandTFlush<CR>
 map <leader>t :CommandT<CR>
 
+map <leader><Bar> :Tabularize /<Bar><CR>

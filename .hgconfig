@@ -1,0 +1,17 @@
+# Non-user-specific Mercurial configuration.
+# Include into .hgrc with %include ~/.hgconfig
+
+[ui]
+ignore = ~/.hgignore
+
+[pager]
+pager = LESS='FSRX' less
+
+[extensions]
+pager =
+hgext.record =
+fetch =
+transplant =
+color =
+hgshelve =
+
