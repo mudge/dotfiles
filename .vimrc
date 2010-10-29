@@ -6,17 +6,12 @@ filetype plugin indent on
 " vim-only mode.
 set nocompatible
 
-" allow unsaved changes in buffers
-set hidden
-
 " highlight trailing whitespace
 set list listchars=trail:.,tab:>.
 
-" backups
+" backups and swapfiles
 set nobackup
-
-" swapfiles
-set directory=~/.vim/swapfiles
+set noswapfile
 
 try
   " persistent undo
@@ -101,5 +96,8 @@ au FileType python setl tags+=/opt/local/etc/tags/django
 " command-t mappings
 map <leader>r :CommandTFlush<CR>
 map <leader>t :CommandT<CR>
+
+" restrict the maximum height of the command-t window
+let g:CommandTMaxHeight=20
 
 map <leader><Bar> :Tabularize /<Bar><CR>

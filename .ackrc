@@ -1,3 +1,4 @@
 --type-add
 ruby=.feature,.sass,.haml,Gemfile,Capfile
-
+--ignore-dir
+coverage
