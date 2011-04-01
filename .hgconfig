@@ -7,23 +7,12 @@ ignore = ~/.hgignore
 [pager]
 pager = LESS='FSRX' less
 
-[alias]
-clog = log -b .
-cpush = push -b .
-
-[pager]
-attend = annotate, cat, diff, export, glog, log, qdiff, clog
-
 [extensions]
-hgext.bookmarks =
-hgext.graphlog =
 hgext.record =
+hgext.churn =
 transplant =
-hgshelve =
-prompt =
 purge =
 pager =
 fetch =
 color =
-hggit =
 mq =

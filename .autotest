@@ -1,4 +1,4 @@
 unless defined?(JRUBY_VERSION)
   require 'autotest/growl'
-  require 'autotest/fsevent'
 end
+

@@ -7,7 +7,7 @@ filetype plugin indent on
 set nocompatible
 
 " highlight trailing whitespace
-set list listchars=trail:.,tab:>.
+set list listchars=trail:·,tab:>-
 
 " backups and swapfiles
 set nobackup
@@ -62,7 +62,7 @@ syntax on
 " NERDTree settings
 map <leader>d :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
-let NERDTreeIgnore=['^\.DS_Store$', '\~$']
+let NERDTreeIgnore=['^\.DS_Store$', '\~$', '\.gem$', '\.war$']
 
 " fugitive settings
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
@@ -82,16 +82,12 @@ map <leader>s :call StripWhitespace()<CR>
 " use set ft= instead of setf to ensure these
 " filetypes take precedence.
 au BufRead,BufNewFile *.md set ft=mkd
-au BufRead,BufNewFile {Cap,Gem}file set ft=ruby
+au BufRead,BufNewFile {Cap,Gem,Vagrant}file,.autotest,*.ru set ft=ruby
 au BufRead,BufNewFile .bundle/config,.gemrc set ft=yaml
 au BufRead,BufNewFile templates/*.html set ft=htmldjango
 
-" python indentation
-au FileType python setl sw=4 sts=4
-
-" ctags
-au FileType ruby setl tags+=/opt/local/etc/tags/ruby,/opt/local/etc/tags/gems iskeyword+=?,!
-au FileType python setl tags+=/opt/local/etc/tags/django
+" python and puppet indentation
+au FileType python,puppet setl sw=4 sts=4
 
 " command-t mappings
 map <leader>r :CommandTFlush<CR>
@@ -101,3 +97,5 @@ map <leader>t :CommandT<CR>
 let g:CommandTMaxHeight=20
 
 map <leader><Bar> :Tabularize /<Bar><CR>
+
+colorscheme solarized
