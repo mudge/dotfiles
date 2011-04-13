@@ -1,4 +1,6 @@
 --type-add
-ruby=.feature,.sass,.haml,Gemfile,Capfile
+ruby=.feature,.sass,.haml,Gemfile,Capfile,.ru,Vagrantfile
+--type-add
+js=.jst
 --ignore-dir
 coverage

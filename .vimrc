@@ -92,6 +92,7 @@ au FileType python,puppet setl sw=4 sts=4
 " command-t mappings
 map <leader>r :CommandTFlush<CR>
 map <leader>t :CommandT<CR>
+map <leader>b :CommandTBuffer<CR>
 
 " restrict the maximum height of the command-t window
 let g:CommandTMaxHeight=20
