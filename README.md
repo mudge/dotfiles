@@ -5,6 +5,13 @@ so thanks to him for providing such an invaluable resource.
 
   [rtomayko]: http://github.com/rtomayko/dotfiles
 
+## Usage
+
+As most (if not all) my Vim plugins are [git submodules][] you will need to run the following commands once you have cloned this repository:
+
+    $ git submodule init
+    $ git submodule update
+
 ## Vim Plugins
 
 * Wincent Colaiuta's [Command-T][] (modified to work around [an issue with Vim 7.3](https://wincent.com/issues/1617));
@@ -27,4 +34,5 @@ so thanks to him for providing such an invaluable resource.
   [surround.vim]: http://www.vim.org/scripts/script.php?script_id=1697
   [NERDCommenter]: https://github.com/scrooloose/nerdcommenter
   [Solarized]: http://ethanschoonover.com/solarized
+  [git submodules]: http://book.git-scm.com/5_submodules.html
 
