@@ -1,10 +1,13 @@
 " use pathogen for vim plugins
-call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
 
 filetype plugin indent on
 
 " vim-only mode.
 set nocompatible
+
+" disable code folding
+set nofoldenable
 
 " highlight trailing whitespace
 set list listchars=trail:·,tab:>-
@@ -83,11 +86,10 @@ map <leader>s :call StripWhitespace()<CR>
 " filetypes take precedence.
 au BufRead,BufNewFile *.md set ft=mkd
 au BufRead,BufNewFile {Cap,Gem,Vagrant}file,.autotest,*.ru set ft=ruby
-au BufRead,BufNewFile .bundle/config,.gemrc set ft=yaml
-au BufRead,BufNewFile templates/*.html set ft=htmldjango
+au BufRead,BufNewFile Procfile,.bundle/config,.gemrc set ft=yaml
 
-" python and puppet indentation
-au FileType python,puppet setl sw=4 sts=4
+" python indentation
+au FileType python setl sw=4 sts=4
 
 " command-t mappings
 map <leader>r :CommandTFlush<CR>
@@ -99,4 +101,3 @@ let g:CommandTMaxHeight=20
 
 map <leader><Bar> :Tabularize /<Bar><CR>
 
-colorscheme solarized
