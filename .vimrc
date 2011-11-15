@@ -9,6 +9,9 @@ set nocompatible
 " disable code folding
 set nofoldenable
 
+" set encoding so unicode listchars can be used
+set encoding=utf-8
+
 " highlight trailing whitespace
 set list listchars=trail:·,tab:>-
 
