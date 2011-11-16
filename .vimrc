@@ -102,3 +102,5 @@ let g:CommandTMaxHeight=20
 
 " ignore certain standard directories
 set wildignore+=vendor/bundler,.git,.hg,.bundle,vendor/cache,coverage
+
+colorscheme espresso
