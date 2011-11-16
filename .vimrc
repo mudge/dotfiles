@@ -87,6 +87,7 @@ map <leader>s :call StripWhitespace()<CR>
 au BufRead,BufNewFile *.md set ft=mkd
 au BufRead,BufNewFile {Cap,Gem,Vagrant}file,.autotest,*.ru set ft=ruby
 au BufRead,BufNewFile Procfile,.bundle/config,.gemrc set ft=yaml
+au BufRead,BufNewFile *.sbt set ft=scala
 
 " python indentation
 au FileType python setl sw=4 sts=4
@@ -99,5 +100,5 @@ map <leader>b :CommandTBuffer<CR>
 " restrict the maximum height of the command-t window
 let g:CommandTMaxHeight=20
 
-map <leader><Bar> :Tabularize /<Bar><CR>
-
+" ignore certain standard directories
+set wildignore+=vendor/bundler,.git,.hg,.bundle,vendor/cache,coverage
