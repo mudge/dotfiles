@@ -92,6 +92,9 @@ au BufRead,BufNewFile {Cap,Gem,Vagrant}file,.autotest,*.ru set ft=ruby
 au BufRead,BufNewFile Procfile,.bundle/config,.gemrc set ft=yaml
 au BufRead,BufNewFile *.sbt set ft=scala
 
+" disable cindent for JavaScript for sane indentation.
+autocmd FileType javascript setlocal nocindent
+
 " python indentation
 au FileType python setl sw=4 sts=4
 
