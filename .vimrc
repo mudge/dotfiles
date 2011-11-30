@@ -87,13 +87,13 @@ map <leader>s :call StripWhitespace()<CR>
 " detect filetypes
 " use set ft= instead of setf to ensure these
 " filetypes take precedence.
-au BufRead,BufNewFile *.md set ft=mkd
+au BufRead,BufNewFile *.ronn set ft=markdown
 au BufRead,BufNewFile {Cap,Gem,Vagrant}file,.autotest,*.ru set ft=ruby
 au BufRead,BufNewFile Procfile,.bundle/config,.gemrc set ft=yaml
 au BufRead,BufNewFile *.sbt set ft=scala
 
 " disable cindent for JavaScript for sane indentation.
-autocmd FileType javascript setlocal nocindent
+au FileType javascript setlocal nocindent sw=4 sts=4
 
 " python indentation
 au FileType python setl sw=4 sts=4
