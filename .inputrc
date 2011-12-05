@@ -1,2 +1,5 @@
+# Bind up and down to the history functions so that you
+# can type a partial command (e.g. git clone) and simply
+# scroll through past invocations with the arrow keys.
 "\e[A":history-search-backward
 "\e[B":history-search-forward

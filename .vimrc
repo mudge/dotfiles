@@ -9,6 +9,11 @@ set nocompatible
 " disable modelines
 set nomodeline
 
+" use the system clipboard
+if has("clipboard")
+  set clipboard=unnamed
+endif
+
 " disable code folding
 set nofoldenable
 
