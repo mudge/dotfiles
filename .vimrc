@@ -6,6 +6,9 @@ filetype plugin indent on
 " vim-only mode.
 set nocompatible
 
+" disable modelines
+set nomodeline
+
 " disable code folding
 set nofoldenable
 
@@ -54,6 +57,7 @@ set nostartofline
 set cursorline
 set showmatch
 set virtualedit=block
+set showtabline=2
 
 " searching
 set hlsearch
@@ -109,4 +113,6 @@ let g:CommandTMaxHeight=20
 " ignore certain standard directories
 set wildignore+=vendor/bundler,.git,.hg,.bundle,vendor/cache,coverage
 
+" colorscheme
+set t_Co=256
 colorscheme espresso
