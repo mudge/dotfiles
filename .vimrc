@@ -1,10 +1,31 @@
-" use pathogen for vim plugins
-call pathogen#infect()
-
-filetype plugin indent on
-
 " vim-only mode.
 set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage itself
+Bundle 'gmarik/vundle'
+
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'bdd/vim-scala'
+Bundle 'garbas/vim-web-indent'
+Bundle 'godlygeek/tabular'
+Bundle 'kien/ctrlp.vim'
+Bundle 'kogent/vim-puppet'
+Bundle 'matchit.zip'
+Bundle 'nginx.vim'
+Bundle 'scrooloose/nerdtree'
+Bundle 'tomtom/tcomment_vim'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-markdown'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-surround'
+
+filetype plugin indent on
 
 " disable modelines
 set nomodeline
@@ -79,10 +100,6 @@ map <leader>d :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['^\.DS_Store$', '\~$', '\.gem$', '\.war$']
 
-" fugitive settings
-set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
-set laststatus=2
-
 " jump to last opened position
 au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
                          \ exe "normal g'\"" | endif
@@ -100,6 +117,7 @@ au BufRead,BufNewFile *.ronn set ft=markdown
 au BufRead,BufNewFile {Cap,Gem,Vagrant}file,.autotest,*.ru set ft=ruby
 au BufRead,BufNewFile Procfile,.bundle/config,.gemrc set ft=yaml
 au BufRead,BufNewFile *.sbt set ft=scala
+au BufRead,BufNewFile *.json set ft=javascript
 
 " disable cindent for JavaScript for sane indentation.
 au FileType javascript setlocal nocindent sw=4 sts=4
@@ -107,17 +125,11 @@ au FileType javascript setlocal nocindent sw=4 sts=4
 " python indentation
 au FileType python setl sw=4 sts=4
 
-" command-t mappings
-map <leader>r :CommandTFlush<CR>
-map <leader>t :CommandT<CR>
-map <leader>b :CommandTBuffer<CR>
-
-" restrict the maximum height of the command-t window
-let g:CommandTMaxHeight=20
-
 " ignore certain standard directories
-set wildignore+=vendor/bundler,.git,.hg,.bundle,vendor/cache,coverage
+set wildignore+=*/vendor/bundler/*,*/.git/*,*/.hg/*,*/.bundle/*,*/vendor/cache/*,*/coverage/*
+
+" always show the status line
+set laststatus=2
 
 " colorscheme
 set t_Co=256
-colorscheme espresso
