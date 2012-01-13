@@ -7,10 +7,9 @@ so thanks to him for providing such an invaluable resource.
 
 ## Usage
 
-As my Vim plugins are managed with [Vundle][], you will need to first checkout Vundle as a git submodule once you have cloned this repository:
+As my Vim plugins are managed with [Vundle][], you will first need to install it like so:
 
-    $ git submodule init
-    $ git submodule update
+    $ git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
 And then run the following command inside vim:
 
