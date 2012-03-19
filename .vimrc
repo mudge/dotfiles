@@ -10,7 +10,7 @@ Bundle 'gmarik/vundle'
 
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'bdd/vim-scala'
-Bundle 'garbas/vim-web-indent'
+Bundle 'JavaScript-Indent'
 Bundle 'godlygeek/tabular'
 Bundle 'kien/ctrlp.vim'
 Bundle 'kogent/vim-puppet'
@@ -110,6 +110,8 @@ function! StripWhitespace()
 endfunction
 map <leader>s :call StripWhitespace()<CR>
 
+map <leader>t :w<CR>:!bin/rspec --no-color %<CR>
+
 " detect filetypes
 " use set ft= instead of setf to ensure these
 " filetypes take precedence.
@@ -126,7 +128,7 @@ au FileType javascript setlocal nocindent sw=4 sts=4
 au FileType python setl sw=4 sts=4
 
 " ignore certain standard directories
-set wildignore+=*/vendor/bundler/*,*/.git/*,*/.hg/*,*/.bundle/*,*/vendor/cache/*,*/coverage/*
+set wildignore+=*/vendor/bundler/*,*/.git/*,*/.hg/*,*/.bundle/*,*/vendor/cache/*,*/coverage/*,*.class,*.jar
 
 " always show the status line
 set laststatus=2
