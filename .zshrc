@@ -57,5 +57,5 @@ eval "$(rbenv init -)"
 # ~/Projects/blah (master) 1.9.2-p290 (set by /Users/mudge/.rbenv/version)
 # $
 setopt prompt_subst
-PROMPT='%{$fg[grey]%}%B%~%b${$(__git_ps1 " (%s)")} %{$fg[red]%}%{$(rbenv version)}%{$fg[grey]%}
+PROMPT='%{$fg[grey]%}%B%~%b$(__git_ps1 " (%s)") %{$fg[red]%}$(rbenv version)%{$fg[grey]%}
 %B$%b %f'
