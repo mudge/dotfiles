@@ -18,8 +18,9 @@ zstyle ':completion:*' menu select
 autoload -Uz colors
 colors
 
-# Use git's bash completion (which is frankly great)
-# as is it compatible with ZSH and load __git_ps1.
+# Load git's bash completion (which is frankly great)
+# as it is compatible with ZSH and includes the __git_ps1
+# function.
 source $(brew --prefix)/etc/bash_completion.d/git-completion.bash
 
 # Alias for firing up a Rails console in both Rails 2.3
