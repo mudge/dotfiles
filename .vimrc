@@ -122,7 +122,7 @@ function! RunSpec()
   write
 
   if match(current_file, '_spec\.rb$') != -1
-    exec ':!bin/rspec --no-color' . current_file
+    exec ':!bin/rspec --no-color ' . current_file
   else
     let spec_file = substitute(current_file, '\.rb$', '_spec.rb', '')
 
