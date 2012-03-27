@@ -41,10 +41,6 @@ cleanup () {
   done
 }
 
-# Alias git to hub but do it with a function so that completion
-# still works.
-function git(){hub "$@"}
-
 CLICOLOR=1
 EDITOR="mvim -f"
 JAVA_OPTS="-d32 -client"
@@ -53,6 +49,9 @@ export CLICOLOR EDITOR JAVA_OPTS PATH
 
 # rbenv initialization.
 eval "$(rbenv init -)"
+
+# hub alias setup.
+eval "$(hub alias -s)"
 
 # Set up a prompt to look like so:
 # ~/Projects/blah (master) 1.9.2-p290 (set by /Users/mudge/.rbenv/version)
