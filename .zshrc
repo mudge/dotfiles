@@ -59,3 +59,9 @@ eval "$(hub alias -s)"
 setopt prompt_subst
 PROMPT='%{$fg[grey]%}%B%~%b$(__git_ps1 " (%s)") %{$fg[red]%}$(rbenv version)%{$fg[grey]%}
 %B$%b %f'
+
+# Key bindings.
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
+bindkey "^[[1;9D" backward-word
+bindkey "^[[1;9C" forward-word
