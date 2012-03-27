@@ -110,7 +110,31 @@ function! StripWhitespace()
 endfunction
 map <leader>s :call StripWhitespace()<CR>
 
-map <leader>t :w<CR>:!bin/rspec --no-color %<CR>
+" If the current file is a spec, run it; if not, guess where the spec file is
+" and run that.
+"
+" e.g.
+"   spec/models/person_spec.rb => bin/rspec --no-color spec/models/person_spec.rb
+"   lib/something.rb => bin/rspec --no-color spec/lib/something_spec.rb
+"   app/models/person.rb => bin/rspec --no-color spec/models/person_spec.rb
+function! RunSpec()
+  let current_file = expand('%')
+  write
+
+  if match(current_file, '_spec\.rb$') != -1
+    exec ':!bin/rspec --no-color' . current_file
+  else
+    let spec_file = substitute(current_file, '\.rb$', '_spec.rb', '')
+
+    " Remove app/ for Rails apps.
+    if match(current_file, '^app/') != -1
+      let spec_file = substitute(spec_file, '^app/', '', '')
+    endif
+
+    exec ':!bin/rspec --no-color spec/' . spec_file
+  endif
+endfunction
+map <leader>t :call RunSpec()<CR>
 
 " detect filetypes
 " use set ft= instead of setf to ensure these
