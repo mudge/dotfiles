@@ -59,12 +59,11 @@ cleanup () {
   done
 }
 
-# Alias git to hub but do it with a function so that completion
-# still works.
-function git(){hub "$@"}
-
 # rbenv initialization.
 eval "$(rbenv init -)"
+
+# hub alias setup.
+eval "$(hub alias -s)"
 
 # Set up a prompt to look like so:
 # ~/Projects/blah (master) 1.9.2-p290 (set by /Users/mudge/.rbenv/version)
@@ -72,3 +71,9 @@ eval "$(rbenv init -)"
 setopt prompt_subst
 PROMPT='%{$fg[grey]%}%B%~%b$(__git_ps1 " (%s)") %{$fg[red]%}$(rbenv version)%{$fg[grey]%}
 %B$%b %f'
+
+# Key bindings.
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
+bindkey "^[[1;9D" backward-word
+bindkey "^[[1;9C" forward-word
