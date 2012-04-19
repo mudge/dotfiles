@@ -100,6 +100,13 @@ set laststatus=2
 
 " colorscheme
 set t_Co=256
+
+" give a little breathing room when scrolling
+set scrolloff=3
+
+" allow buffers to be hidden without saving
+set hidden
+
 " leader
 let mapleader = ","
 
