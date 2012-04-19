@@ -18,23 +18,12 @@ zstyle ':completion:*' menu select
 autoload -Uz colors
 colors
 
-# Use Homebrew in ~/.brew
-PATH="${HOME}/.brew/bin:$PATH"
-MANPATH="${HOME}/.brew/share/man:$MANPATH"
-
-# Use Homebrew's Python.
-PATH="${HOME}/.brew/share/python:$PATH"
-
-# Use mvim.
-PATH="${HOME}/.mvim/bin:$PATH"
-
-# Node.
-NODE_PATH="${HOME}/.brew/lib/node_modules"
-
 CLICOLOR=1
 EDITOR="mvim -f"
 JAVA_OPTS="-d32 -client"
-export CLICOLOR EDITOR JAVA_OPTS PATH NODE_PATH MANPATH
+CC="/usr/bin/gcc"
+PATH="$HOME/.rbenv/bin:/usr/local/bin:${PATH/\/usr\/local\/bin:}"
+export CLICOLOR EDITOR JAVA_OPTS PATH
 
 # Load git's bash completion (which is frankly great)
 # as it is compatible with ZSH and includes the __git_ps1

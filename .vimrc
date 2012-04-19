@@ -8,6 +8,7 @@ call vundle#rc()
 " let Vundle manage itself
 Bundle 'gmarik/vundle'
 
+Bundle 'mudge/runspec.vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'bdd/vim-scala'
 Bundle 'JavaScript-Indent'
@@ -16,9 +17,8 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'kogent/vim-puppet'
 Bundle 'matchit.zip'
 Bundle 'nginx.vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-rails'
@@ -53,7 +53,7 @@ try
   set undodir=~/.vim/undodir
   set undofile
 
-  set colorcolumn=85
+  set colorcolumn=+1
 catch /Unknown option/
   " For versions of Vim prior to 7.3.
 endtry
@@ -68,7 +68,7 @@ set expandtab
 set nosmarttab
 
 " sensible backspace behaviour
-set backspace=2
+set backspace=indent,eol,start
 
 " use ack instead of grep
 set grepprg=ack
@@ -89,67 +89,8 @@ set showtabline=2
 set hlsearch
 set incsearch
 
-" leader
-let mapleader = ","
-
-" syntax highlighting
-syntax on
-
-" NERDTree settings
-map <leader>d :NERDTreeToggle<CR>
-let NERDTreeShowHidden=1
-let NERDTreeIgnore=['^\.DS_Store$', '\~$', '\.gem$', '\.war$']
-
-" jump to last opened position
-au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
-                         \ exe "normal g'\"" | endif
-
-" strip trailing whitespace
-function! StripWhitespace()
-    exec ':%s/ \+$//gc'
-endfunction
-map <leader>s :call StripWhitespace()<CR>
-
-" If the current file is a spec, run it; if not, guess where the spec file is
-" and run that.
-"
-" e.g.
-"   spec/models/person_spec.rb => bin/rspec --no-color spec/models/person_spec.rb
-"   lib/something.rb => bin/rspec --no-color spec/lib/something_spec.rb
-"   app/models/person.rb => bin/rspec --no-color spec/models/person_spec.rb
-function! RunSpec()
-  let current_file = expand('%')
-  write
-
-  if match(current_file, '_spec\.rb$') != -1
-    exec ':!bin/rspec --no-color ' . current_file
-  else
-    let spec_file = substitute(current_file, '\.rb$', '_spec.rb', '')
-
-    " Remove app/ for Rails apps.
-    if match(current_file, '^app/') != -1
-      let spec_file = substitute(spec_file, '^app/', '', '')
-    endif
-
-    exec ':!bin/rspec --no-color spec/' . spec_file
-  endif
-endfunction
-map <leader>t :call RunSpec()<CR>
-
-" detect filetypes
-" use set ft= instead of setf to ensure these
-" filetypes take precedence.
-au BufRead,BufNewFile *.ronn set ft=markdown
-au BufRead,BufNewFile {Cap,Gem,Vagrant}file,.autotest,*.ru set ft=ruby
-au BufRead,BufNewFile Procfile,.bundle/config,.gemrc set ft=yaml
-au BufRead,BufNewFile *.sbt set ft=scala
-au BufRead,BufNewFile *.json set ft=javascript
-
-" disable cindent for JavaScript for sane indentation.
-au FileType javascript setlocal nocindent sw=4 sts=4
-
-" python indentation
-au FileType python setl sw=4 sts=4
+" tab completion for files
+set wildmenu
 
 " ignore certain standard directories
 set wildignore+=*/vendor/bundler/*,*/.git/*,*/.hg/*,*/.bundle/*,*/vendor/cache/*,*/coverage/*,*.class,*.jar
@@ -159,3 +100,62 @@ set laststatus=2
 
 " colorscheme
 set t_Co=256
+" leader
+let mapleader = ","
+
+" syntax highlighting
+syntax on
+
+" disciplinary measures
+map <Left> <Nop>
+map <Right> <Nop>
+map <Up> <Nop>
+map <Down> <Nop>
+
+augroup mudge
+  autocmd!
+
+  autocmd FileType text,markdown setlocal textwidth=78
+
+  " jump to last opened position (taken from
+  " $VIMRUNTIME/vimrc_example.vim)
+  autocmd BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
+
+  " detect filetypes
+  " use set ft= instead of setf to ensure these
+  " filetypes take precedence.
+  au BufRead,BufNewFile *.ronn set ft=markdown
+  au BufRead,BufNewFile {Cap,Gem,Vagrant}file,.autotest,*.ru set ft=ruby
+  au BufRead,BufNewFile Procfile,.bundle/config,.gemrc set ft=yaml
+  au BufRead,BufNewFile *.sbt set ft=scala
+  au BufRead,BufNewFile *.json set ft=javascript
+
+  " disable cindent for JavaScript for sane indentation.
+  au FileType javascript setlocal nocindent sw=4 sts=4
+
+  " python indentation
+  au FileType python setlocal sw=4 sts=4
+augroup END
+
+" strip trailing whitespace
+function! StripWhitespace()
+  exec ':%s/ \+$//gc'
+endfunction
+map <leader>s :call StripWhitespace()<CR>
+
+" rename current file (from
+" https://github.com/garybernhardt/dotfiles/blob/master/.vimrc)
+function! RenameFile()
+  let old_name = expand('%')
+  let new_name = input('New file name: ', expand('%'), 'file')
+  if new_name != '' && new_name != old_name
+    exec ':saveas ' . new_name
+    exec ':silent !rm ' . old_name
+    redraw!
+  endif
+endfunction
+map <leader>n :call RenameFile()<cr>
+
