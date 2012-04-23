@@ -107,6 +107,9 @@ set scrolloff=3
 " allow buffers to be hidden without saving
 set hidden
 
+" so that things like rbenv Just Work
+set shell=/bin/bash
+
 " leader
 let mapleader = ","
 
