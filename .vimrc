@@ -8,6 +8,7 @@ call vundle#rc()
 " let Vundle manage itself
 Bundle 'gmarik/vundle'
 
+Bundle 'ack.vim'
 Bundle 'mudge/runspec.vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'bdd/vim-scala'
@@ -127,16 +128,14 @@ augroup mudge
 
   autocmd FileType text,markdown setlocal textwidth=78
 
-  " jump to last opened position (taken from
-  " $VIMRUNTIME/vimrc_example.vim)
+  " jump to last opened position (taken from $VIMRUNTIME/vimrc_example.vim)
   autocmd BufReadPost *
     \ if line("'\"") > 1 && line("'\"") <= line("$") |
     \   exe "normal! g`\"" |
     \ endif
 
   " detect filetypes
-  " use set ft= instead of setf to ensure these
-  " filetypes take precedence.
+  " use set ft= instead of setf to ensure these filetypes take precedence.
   au BufRead,BufNewFile *.ronn set ft=markdown
   au BufRead,BufNewFile {Cap,Gem,Vagrant}file,.autotest,*.ru set ft=ruby
   au BufRead,BufNewFile Procfile,.bundle/config,.gemrc set ft=yaml
@@ -146,8 +145,11 @@ augroup mudge
   " disable cindent for JavaScript for sane indentation.
   au FileType javascript setlocal nocindent sw=4 sts=4
 
-  " python indentation
+  " python indentation.
   au FileType python setlocal sw=4 sts=4
+
+  " automatically reload any changes to this file.
+  au BufWritePost .vimrc source $MYVIMRC
 augroup END
 
 " strip trailing whitespace
