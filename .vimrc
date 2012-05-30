@@ -8,8 +8,10 @@ call vundle#rc()
 " let Vundle manage itself
 Bundle 'gmarik/vundle'
 
+Bundle 'juvenn/mustache.vim'
 Bundle 'ack.vim'
 Bundle 'mudge/runspec.vim'
+Bundle 'vim-ruby/vim-ruby'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'bdd/vim-scala'
 Bundle 'JavaScript-Indent'
@@ -114,6 +116,9 @@ set shell=/bin/bash
 " leader
 let mapleader = ","
 
+" no line numbers when exporting HTML
+let g:html_number_lines = 0
+
 " syntax highlighting
 syntax on
 
@@ -123,10 +128,13 @@ map <Right> <Nop>
 map <Up> <Nop>
 map <Down> <Nop>
 
+" clear highlight on enter
+nnoremap <CR> :nohlsearch<CR>
+
 augroup mudge
   autocmd!
 
-  autocmd FileType text,markdown setlocal textwidth=78
+  autocmd FileType text,markdown,ruby setlocal textwidth=78
 
   " jump to last opened position (taken from $VIMRUNTIME/vimrc_example.vim)
   autocmd BufReadPost *
@@ -170,4 +178,7 @@ function! RenameFile()
   endif
 endfunction
 map <leader>n :call RenameFile()<cr>
+
+colorscheme grb256
+highlight ColorColumn ctermbg=234 guibg=#121212
 
