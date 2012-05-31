@@ -22,6 +22,7 @@ CLICOLOR=1
 EDITOR="mvim -f"
 JAVA_OPTS="-d32 -client"
 CC="/usr/bin/gcc"
+PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
 PATH="$HOME/.rbenv/bin:/usr/local/bin:${PATH/\/usr\/local\/bin:}"
 export CLICOLOR EDITOR JAVA_OPTS PATH
 
@@ -58,8 +59,8 @@ eval "$(hub alias -s)"
 # ~/Projects/blah (master) 1.9.2-p290 (set by /Users/mudge/.rbenv/version)
 # $
 setopt prompt_subst
-PROMPT='%{$fg[grey]%}%B%~%b$(__git_ps1 " (%s)") %{$fg[red]%}$(rbenv version)%{$fg[grey]%}
-%B$%b %f'
+precmd() { print -rP '%{$fg[lightgrey]%}%B%~%b$(__git_ps1 " (%s)") %{$fg[red]%}$(rbenv version)' }
+PROMPT='%{$fg[lightgrey]%}%B$%b %f'
 
 # Key bindings.
 bindkey '^[[A' history-beginning-search-backward
