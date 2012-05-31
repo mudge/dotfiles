@@ -5,7 +5,7 @@ SAVEHIST=1000
 setopt appendhistory
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/Users/mudge/.zshrc'
+zstyle :compinstall filename "$HOME/.zshrc"
 
 autoload -Uz compinit
 compinit
@@ -19,7 +19,7 @@ autoload -Uz colors
 colors
 
 CLICOLOR=1
-EDITOR="mvim -f"
+EDITOR="vim"
 JAVA_OPTS="-d32 -client"
 CC="/usr/bin/gcc"
 PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
