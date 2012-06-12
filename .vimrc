@@ -8,6 +8,7 @@ call vundle#rc()
 " let Vundle manage itself
 Bundle 'gmarik/vundle'
 
+Bundle 'jpalardy/vim-slime'
 Bundle 'juvenn/mustache.vim'
 Bundle 'ack.vim'
 Bundle 'mudge/runspec.vim'
@@ -124,7 +125,10 @@ map <Up> <Nop>
 map <Down> <Nop>
 
 " clear highlight on enter
-nnoremap <CR> :nohlsearch<CR>
+function! MapCR()
+  nnoremap <CR> :nohlsearch<CR>
+endfunction
+call MapCR()
 
 augroup mudge
   autocmd!
@@ -153,6 +157,11 @@ augroup mudge
 
   " automatically reload any changes to this file.
   au BufWritePost .vimrc source $MYVIMRC
+
+  " as stolen from Gary Bernhardt: unmap :nohlsearch when in a command
+  " window.
+  au CmdwinEnter * :unmap <cr>
+  au CmdwinLeave * :call MapCR()
 augroup END
 
 " strip trailing whitespace
@@ -177,3 +186,4 @@ map <leader>n :call RenameFile()<cr>
 colorscheme grb256
 highlight ColorColumn ctermbg=234 guibg=#121212
 
+let g:slime_target = "tmux"
