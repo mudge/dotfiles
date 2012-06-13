@@ -115,6 +115,9 @@ let mapleader = ","
 " no line numbers when exporting HTML
 let g:html_number_lines = 0
 
+" use tmux instead of screen with vim-slime
+let g:slime_target = "tmux"
+
 " syntax highlighting
 syntax on
 
@@ -124,11 +127,11 @@ map <Right> <Nop>
 map <Up> <Nop>
 map <Down> <Nop>
 
-" clear highlight on enter
-function! MapCR()
-  nnoremap <CR> :nohlsearch<CR>
-endfunction
-call MapCR()
+" clear highlight with ,c
+" note that using <CR> is to enter a world of pain as the mapping needs
+" to be cleared for both command windows and quickfix lists so choosing a
+" simpler binding was easier.
+nnoremap <leader>c :nohlsearch<CR>
 
 augroup mudge
   autocmd!
@@ -156,12 +159,7 @@ augroup mudge
   au FileType python setlocal sw=4 sts=4
 
   " automatically reload any changes to this file.
-  au BufWritePost .vimrc source $MYVIMRC
-
-  " as stolen from Gary Bernhardt: unmap :nohlsearch when in a command
-  " window.
-  au CmdwinEnter * :unmap <cr>
-  au CmdwinLeave * :call MapCR()
+  au BufWritePost .vimrc source $MYVIMRC | call Pl#Load()
 augroup END
 
 " strip trailing whitespace
@@ -184,6 +182,4 @@ endfunction
 map <leader>n :call RenameFile()<cr>
 
 colorscheme grb256
-highlight ColorColumn ctermbg=234 guibg=#121212
 
-let g:slime_target = "tmux"

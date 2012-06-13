@@ -30,3 +30,5 @@ highlight DiffDelete term=reverse cterm=bold ctermbg=lightred ctermfg=16
 
 highlight PmenuSel ctermfg=16 ctermbg=156
 
+" add a slightly more pleasing color column than the default
+highlight ColorColumn ctermbg=234 guibg=#121212
