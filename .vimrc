@@ -158,7 +158,9 @@ augroup mudge
   " python indentation.
   au FileType python setlocal sw=4 sts=4
 
-  " automatically reload any changes to this file.
+  " automatically reload any changes to this file and forcibly reload
+  " powerline so that its colours don't disappear.
+  " c.f. https://github.com/Lokaltog/vim-powerline/issues/82
   au BufWritePost .vimrc source $MYVIMRC | call Pl#Load()
 augroup END
 
