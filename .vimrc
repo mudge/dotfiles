@@ -9,7 +9,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 Bundle 'jpalardy/vim-slime'
-Bundle 'juvenn/mustache.vim'
 Bundle 'ack.vim'
 Bundle 'mudge/runspec.vim'
 Bundle 'vim-ruby/vim-ruby'
@@ -127,6 +126,9 @@ map <Right> <Nop>
 map <Up> <Nop>
 map <Down> <Nop>
 
+" use semi-colon to run tests
+map ; <Plug>RunSpecRun
+
 " clear highlight with ,c
 " note that using <CR> is to enter a world of pain as the mapping needs
 " to be cleared for both command windows and quickfix lists so choosing a
@@ -184,4 +186,3 @@ endfunction
 map <leader>n :call RenameFile()<cr>
 
 colorscheme grb256
-
