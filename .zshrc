@@ -18,49 +18,17 @@ zstyle ':completion:*' menu select
 autoload -Uz colors
 colors
 
-CLICOLOR=1
-EDITOR="vim"
-JAVA_OPTS="-d32 -client"
-CC="/usr/bin/gcc"
-PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
-PATH="$HOME/.rbenv/bin:/usr/local/bin:${PATH/\/usr\/local\/bin:}"
-export CLICOLOR EDITOR JAVA_OPTS PATH
+export CLICOLOR="Yes" EDITOR="vim" JAVA_OPTS="-d32 -client" PATH="$(brew --prefix josegonzalez/php/php53)/bin:/usr/local/share/npm/bin:$HOME/.rbenv/bin:$PATH"
 
-# Load git's bash completion (which is frankly great)
-# as it is compatible with ZSH and includes the __git_ps1
-# function.
-source $(brew --prefix)/etc/bash_completion.d/git-completion.bash
-
-# Alias for firing up a Rails console in both Rails 2.3
-# and > 3.0 projects.
-alias sc="if [[ -x script/console ]]; then script/console; else script/rails console; fi"
-
-# Delete branches that have already been merged into the current
-# one both on the origin and locally.
-cleanup () {
-  for branch in $(git br -r --merged | grep -v origin/master | cut -f2 -d/)
-  do
-    git push origin :${branch}
-  done
-
-  for branch in $(git br --merged | grep -v '* master' | cut -c 3-)
-  do
-    git br -d ${branch}
-  done
-}
-
-# rbenv initialization.
+# rbenv and hub initialization.
 eval "$(rbenv init -)"
-
-# hub alias setup.
 eval "$(hub alias -s)"
 
-# Set up a prompt to look like so:
-# ~/Projects/blah (master) 1.9.2-p290 (set by /Users/mudge/.rbenv/version)
-# $
 setopt prompt_subst
-precmd() { print -rP '%{$fg[lightgrey]%}%B%~%b$(__git_ps1 " (%s)") %{$fg[red]%}$(rbenv version)' }
-PROMPT='%{$fg[lightgrey]%}%B$%b %f'
+source /usr/local/etc/bash_completion.d/git-prompt.sh
+
+PROMPT="%{%F{yellow}%}%~%{%f%}> "
+RPROMPT='%{%F{red}%}$(__git_ps1 "%s")%{%f%}'
 
 # Key bindings.
 bindkey '^[[A' history-beginning-search-backward

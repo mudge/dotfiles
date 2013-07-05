@@ -1,4 +1,4 @@
-" vim-only mode.
+" vim-onlymode.
 set nocompatible
 filetype off
 
@@ -8,26 +8,29 @@ call vundle#rc()
 " let Vundle manage itself
 Bundle 'gmarik/vundle'
 
-Bundle 'jpalardy/vim-slime'
-Bundle 'juvenn/mustache.vim'
-Bundle 'ack.vim'
-Bundle 'mudge/runspec.vim'
-Bundle 'vim-ruby/vim-ruby'
+Bundle 'altercation/vim-colors-solarized'
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'bdd/vim-scala'
-Bundle 'JavaScript-Indent'
+Bundle 'StanAngeloff/php.vim'
+Bundle 'ack.vim'
+Bundle 'derekwyatt/vim-scala'
 Bundle 'godlygeek/tabular'
+Bundle 'guns/vim-clojure-static'
+Bundle 'juvenn/mustache.vim'
 Bundle 'kien/ctrlp.vim'
-Bundle 'kogent/vim-puppet'
 Bundle 'matchit.zip'
+Bundle 'mudge/runspec.vim'
 Bundle 'nginx.vim'
-Bundle 'tpope/vim-endwise'
+Bundle 'pangloss/vim-javascript'
+Bundle 'tpope/vim-classpath'
 Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-fireplace'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
+Bundle 'vim-ruby/vim-ruby'
 
 filetype plugin indent on
 
@@ -183,5 +186,6 @@ function! RenameFile()
 endfunction
 map <leader>n :call RenameFile()<cr>
 
-colorscheme grb256
+set bg=dark
+colorscheme solarized
 
