@@ -93,6 +93,7 @@ set incsearch
 
 " tab completion for files
 set wildmenu
+set wildmode=list,full
 
 " ignore certain standard directories
 set wildignore+=*/vendor/bundler/*,*/.git/*,*/.hg/*,*/.bundle/*,*/vendor/cache/*,*/coverage/*,*.class,*.jar
