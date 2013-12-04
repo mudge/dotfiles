@@ -8,8 +8,10 @@ call vundle#rc()
 " let Vundle manage itself
 Bundle 'gmarik/vundle'
 
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'nelstrom/vim-qargs'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'Lokaltog/vim-powerline'
+Bundle 'bling/vim-airline'
 Bundle 'StanAngeloff/php.vim'
 Bundle 'ack.vim'
 Bundle 'derekwyatt/vim-scala'
@@ -93,6 +95,7 @@ set incsearch
 
 " tab completion for files
 set wildmenu
+set wildmode=longest,list
 
 " ignore certain standard directories
 set wildignore+=*/vendor/bundler/*,*/.git/*,*/.hg/*,*/.bundle/*,*/vendor/cache/*,*/coverage/*,*.class,*.jar
@@ -118,8 +121,9 @@ let mapleader = ","
 " no line numbers when exporting HTML
 let g:html_number_lines = 0
 
-" use tmux instead of screen with vim-slime
-let g:slime_target = "tmux"
+" airline settings
+let g:airline_left_sep = ""
+let g:airline_right_sep = ""
 
 " syntax highlighting
 syntax on
@@ -140,6 +144,7 @@ augroup mudge
   autocmd!
 
   autocmd FileType text,markdown,ruby setlocal textwidth=78
+  autocmd FileType php setlocal sw=4 sts=4
 
   " jump to last opened position (taken from $VIMRUNTIME/vimrc_example.vim)
   autocmd BufReadPost *
@@ -161,10 +166,8 @@ augroup mudge
   " python indentation.
   au FileType python setlocal sw=4 sts=4
 
-  " automatically reload any changes to this file and forcibly reload
-  " powerline so that its colours don't disappear.
-  " c.f. https://github.com/Lokaltog/vim-powerline/issues/82
-  au BufWritePost .vimrc source $MYVIMRC | call Pl#Load()
+  " automatically reload any changes to this file
+  au BufWritePost .vimrc source $MYVIMRC
 augroup END
 
 " strip trailing whitespace
