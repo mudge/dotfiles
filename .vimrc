@@ -8,31 +8,32 @@ call vundle#rc()
 " let Vundle manage itself
 Bundle 'gmarik/vundle'
 
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'nelstrom/vim-qargs'
+" language support
+Bundle 'StanAngeloff/php.vim'
+Bundle 'derekwyatt/vim-scala'
+Bundle 'pangloss/vim-javascript'
+
+" lisp
+Bundle 'paredit.vim'
+Bundle 'kien/rainbow_parentheses.vim'
+Bundle 'tpope/vim-fireplace'
+
+" pretty things
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'bling/vim-airline'
-Bundle 'StanAngeloff/php.vim'
-Bundle 'ack.vim'
-Bundle 'derekwyatt/vim-scala'
+
+" editing
 Bundle 'godlygeek/tabular'
-Bundle 'guns/vim-clojure-static'
-Bundle 'juvenn/mustache.vim'
-Bundle 'kien/ctrlp.vim'
 Bundle 'matchit.zip'
-Bundle 'mudge/runspec.vim'
-Bundle 'nginx.vim'
-Bundle 'pangloss/vim-javascript'
-Bundle 'tpope/vim-classpath'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-fireplace'
-Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-surround'
-Bundle 'vim-ruby/vim-ruby'
+Bundle 'kien/ctrlp.vim'
+
+" integrations
+Bundle 'rking/ag.vim'
+Bundle 'tpope/vim-fugitive'
 
 filetype plugin indent on
 
@@ -73,10 +74,6 @@ set nosmarttab
 
 " sensible backspace behaviour
 set backspace=indent,eol,start
-
-" use ack instead of grep
-set grepprg=ack
-set grepformat=%f:%l:%m
 
 " ui
 set ruler
@@ -171,6 +168,12 @@ augroup mudge
 
   " automatically reload any changes to this file
   au BufWritePost .vimrc source $MYVIMRC
+
+  " rainbow parentheses
+  au VimEnter * RainbowParenthesesToggle
+  au Syntax * RainbowParenthesesLoadRound
+  au Syntax * RainbowParenthesesLoadSquare
+  au Syntax * RainbowParenthesesLoadBraces
 augroup END
 
 " strip trailing whitespace
