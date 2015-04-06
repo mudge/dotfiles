@@ -2,39 +2,41 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage itself
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 " language support
-Bundle 'StanAngeloff/php.vim'
-Bundle 'derekwyatt/vim-scala'
-Bundle 'pangloss/vim-javascript'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'StanAngeloff/php.vim'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'nelstrom/vim-subrip'
 
 " lisp
-Bundle 'paredit.vim'
-Bundle 'kien/rainbow_parentheses.vim'
-Bundle 'tpope/vim-fireplace'
+Plugin 'kien/rainbow_parentheses.vim'
 
 " pretty things
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'bling/vim-airline'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'bling/vim-airline'
 
 " editing
-Bundle 'godlygeek/tabular'
-Bundle 'matchit.zip'
-Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-repeat'
-Bundle 'kien/ctrlp.vim'
+Plugin 'godlygeek/tabular'
+Plugin 'matchit.zip'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-markdown'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-cucumber'
+Plugin 'kien/ctrlp.vim'
 
 " integrations
-Bundle 'rking/ag.vim'
-Bundle 'tpope/vim-fugitive'
+Plugin 'rking/ag.vim'
+Plugin 'mudge/runspec.vim'
 
+call vundle#end()
 filetype plugin indent on
 
 " disable modelines
@@ -55,7 +57,7 @@ set noswapfile
 
 try
   " persistent undo
-  set undodir=~/.vim/undodir
+  set undodir=$HOME/.vim/undodir
   set undofile
 
   set colorcolumn=+1
@@ -81,7 +83,6 @@ set noshowcmd
 set nolazyredraw
 set number
 set nostartofline
-set cursorline
 set showmatch
 set virtualedit=block
 set showtabline=2
@@ -122,8 +123,16 @@ let g:html_number_lines = 0
 let g:airline_left_sep = ""
 let g:airline_right_sep = ""
 
+" paredit settings
+let g:paredit_smartjump = 1
+
+" ctrl-p settings
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_cache_dir = $HOME.'/.vim/ctrlpdir'
+
 " syntax highlighting
-syntax on
+syntax enable
+syntax sync minlines=256
 
 " disciplinary measures
 map <Left> <Nop>
