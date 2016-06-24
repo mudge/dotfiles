@@ -1,55 +1,48 @@
-" vim-onlymode.
-set nocompatible
-filetype off
+call plug#begin()
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" let Vundle manage itself
-Plugin 'gmarik/Vundle.vim'
+" sensible defaults
+Plug 'tpope/vim-sensible'
 
 " language support
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'StanAngeloff/php.vim'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'nelstrom/vim-subrip'
+Plug 'vim-ruby/vim-ruby'
+Plug 'StanAngeloff/php.vim'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'nelstrom/vim-subrip'
+Plug 'tpope/vim-liquid'
+Plug 'rust-lang/rust.vim'
+Plug 'cespare/vim-toml'
 
 " lisp
-Plugin 'kien/rainbow_parentheses.vim'
+Plug 'kien/rainbow_parentheses.vim'
 
 " pretty things
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'bling/vim-airline'
+Plug 'altercation/vim-colors-solarized'
+Plug 'bling/vim-airline'
 
 " editing
-Plugin 'godlygeek/tabular'
-Plugin 'matchit.zip'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-markdown'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-cucumber'
-Plugin 'kien/ctrlp.vim'
+Plug 'godlygeek/tabular'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-cucumber'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-fugitive'
+Plug 'kien/ctrlp.vim'
 
 " integrations
-Plugin 'rking/ag.vim'
-Plugin 'mudge/runspec.vim'
+Plug 'rking/ag.vim'
+Plug 'mudge/runspec.vim'
 
-call vundle#end()
-filetype plugin indent on
+call plug#end()
 
 " disable modelines
 set nomodeline
 
 " disable code folding
 set nofoldenable
-
-" set encoding so unicode listchars can be used
-set encoding=utf-8
-
-" highlight trailing whitespace
-set list listchars=trail:·,tab:>-
 
 " backups and swapfiles
 set nobackup
@@ -65,27 +58,12 @@ catch /Unknown option/
   " For versions of Vim prior to 7.3.
 endtry
 
-" 2 spaces for tabs.
-set autoindent
-set smartindent
-set softtabstop=2
-set shiftwidth=2
-set tabstop=4
-set expandtab
-set nosmarttab
-
-" sensible backspace behaviour
-set backspace=indent,eol,start
-
 " ui
-set ruler
-set noshowcmd
-set nolazyredraw
 set number
 set nostartofline
 set showmatch
 set virtualedit=block
-set showtabline=2
+set list
 
 " searching
 set hlsearch
@@ -98,14 +76,8 @@ set wildmode=longest,list
 " ignore certain standard directories
 set wildignore+=*/vendor/bundler/*,*/.git/*,*/.hg/*,*/.bundle/*,*/vendor/cache/*,*/coverage/*,*.class,*.jar
 
-" always show the status line
-set laststatus=2
-
 " colorscheme
 set t_Co=256
-
-" give a little breathing room when scrolling
-set scrolloff=3
 
 " allow buffers to be hidden without saving
 set hidden
@@ -191,19 +163,5 @@ function! StripWhitespace()
 endfunction
 map <leader>s :call StripWhitespace()<CR>
 
-" rename current file (from
-" https://github.com/garybernhardt/dotfiles/blob/master/.vimrc)
-function! RenameFile()
-  let old_name = expand('%')
-  let new_name = input('New file name: ', expand('%'), 'file')
-  if new_name != '' && new_name != old_name
-    exec ':saveas ' . new_name
-    exec ':silent !rm ' . old_name
-    redraw!
-  endif
-endfunction
-map <leader>n :call RenameFile()<cr>
-
 set bg=dark
 colorscheme solarized
-
