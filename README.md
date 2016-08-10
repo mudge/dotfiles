@@ -7,12 +7,13 @@ so thanks to him for providing such an invaluable resource.
 
 ## Usage
 
-As my Vim plugins are managed with [Vundle][], you will first need to install it like so:
+As my Vim plugins are managed with [vim-plug][], you will first need to install it like so:
 
-    $ git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+    $ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+          https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 And then run the following command inside vim:
 
-    :BundleInstall
+    :PlugInstall
 
-  [Vundle]: https://github.com/gmarik/vundle
+  [vim-plug]: https://github.com/junegunn/vim-plug
