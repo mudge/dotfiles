@@ -8,40 +8,30 @@ call minpac#add('k-takata/minpac', {'type': 'opt'})
 call minpac#add('tpope/vim-sensible')
 
 " language support
-call minpac#add('vim-ruby/vim-ruby')
-call minpac#add('StanAngeloff/php.vim')
-call minpac#add('jelera/vim-javascript-syntax')
-call minpac#add('tpope/vim-liquid')
-call minpac#add('rust-lang/rust.vim')
-call minpac#add('cespare/vim-toml')
-call minpac#add('tpope/vim-rails')
-call minpac#add('tpope/vim-rake')
-call minpac#add('tpope/vim-bundler')
-call minpac#add('elixir-editors/vim-elixir')
+call minpac#add('sheerun/vim-polyglot')
 
 " lisp
 call minpac#add('kien/rainbow_parentheses.vim')
+call minpac#add('tpope/vim-salve')
+call minpac#add('tpope/vim-fireplace')
 
 " pretty things
 call minpac#add('itchyny/lightline.vim')
 call minpac#add('arcticicestudio/nord-vim')
 
 " editing
+call minpac#add('w0rp/ale')
 call minpac#add('godlygeek/tabular')
 call minpac#add('tpope/vim-commentary')
 call minpac#add('tpope/vim-endwise')
-call minpac#add('tpope/vim-markdown')
 call minpac#add('tpope/vim-repeat')
 call minpac#add('tpope/vim-surround')
-call minpac#add('tpope/vim-cucumber')
 call minpac#add('tpope/vim-eunuch')
 call minpac#add('tpope/vim-fugitive')
 call minpac#add('tpope/vim-rhubarb')
 call minpac#add('junegunn/fzf')
-call minpac#add('AndrewRadev/deleft.vim')
 
 " integrations
-call minpac#add('rking/ag.vim')
 call minpac#add('mudge/runspec.vim')
 
 " disable modelines
@@ -56,7 +46,7 @@ set noswapfile
 
 try
   " persistent undo
-  set undodir=$HOME/.vim/undodir
+  set undodir=$HOME/.undodir
   set undofile
 
   set colorcolumn=+1
@@ -80,7 +70,7 @@ set wildmenu
 set wildmode=longest,list
 
 " ignore certain standard directories
-set wildignore+=*/vendor/bundler/*,*/.git/*,*/.hg/*,*/.bundle/*,*/vendor/cache/*,*/coverage/*,*.class,*.jar
+set wildignore+=*/vendor/bundler/*,*/.git/*,*/.hg/*,*/.bundle/*,*/vendor/cache/*,*/coverage/*,*.class,*.jar,*/node_modules/*
 
 " allow buffers to be hidden without saving
 set hidden
@@ -104,6 +94,10 @@ let g:html_number_lines = 0
 
 " paredit settings
 let g:paredit_smartjump = 1
+
+let g:ale_fixers = {
+\  'javascript': ['eslint'],
+\}
 
 " grepping
 set grepprg=rg\ --vimgrep\ --no-heading
@@ -134,8 +128,7 @@ nnoremap <leader>c :nohlsearch<CR>
 augroup mudge
   autocmd!
 
-  autocmd FileType ruby setlocal textwidth=120 shiftwidth=2 softtabstop=2
-  autocmd FileType php,javascript setlocal shiftwidth=4 softtabstop=4
+  autocmd FileType ruby setlocal textwidth=100 shiftwidth=2 softtabstop=2
 
   " jump to last opened position (taken from $VIMRUNTIME/vimrc_example.vim)
   autocmd BufReadPost *
@@ -151,9 +144,6 @@ augroup mudge
   au BufRead,BufNewFile *.sbt set ft=scala
   au BufRead,BufNewFile *.json set ft=javascript
   au BufRead,BufNewFile *.lalrpop set ft=rust
-
-  " disable cindent for JavaScript for sensible indentation.
-  au FileType javascript setlocal nocindent sw=4 sts=4
 
   " python indentation.
   au FileType python setlocal sw=4 sts=4
