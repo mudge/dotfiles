@@ -24,16 +24,24 @@ export CLICOLOR="Yes" EDITOR="vim" PATH="/usr/local/bin:/usr/local/sbin:/Applica
 
 export FZF_DEFAULT_COMMAND="rg --files --hidden --no-ignore-vcs"
 
-setopt prompt_subst
-source /usr/local/etc/bash_completion.d/git-prompt.sh
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:git*' formats "%b"
+zstyle ':vcs_info:git*' actionformats "%b|%a"
 
+precmd() { vcs_info }
+
+setopt prompt_subst
 PROMPT="%{%F{yellow}%}%~%{%f%}> "
-RPROMPT='%{%F{red}%}$(__git_ps1 "%s")%{%f%}'
+RPROMPT='%{%F{red}%}${vcs_info_msg_0_}%{%f%}'
 
 source /usr/local/share/chruby/chruby.sh
 source /usr/local/share/chruby/auto.sh
 
-eval "$(hub alias -s)"
+source /usr/local/share/chnode/chnode.sh
+source /usr/local/share/chnode/auto.sh
+
+alias git=hub
 
 # Key bindings.
 bindkey '^[[A' history-beginning-search-backward
@@ -50,10 +58,3 @@ function termsupport_chpwd {
 }
 
 chpwd_functions+=(termsupport_chpwd)
-
-export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
-
-# heroku autocomplete setup
-HEROKU_AC_ZSH_SETUP_PATH=/Users/mudge/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
-
-. /usr/local/etc/profile.d/z.sh
