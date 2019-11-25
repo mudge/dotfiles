@@ -9,6 +9,7 @@ call minpac#add('tpope/vim-sensible')
 
 " language support
 call minpac#add('sheerun/vim-polyglot')
+call minpac#add('sentient-lang/vim-sentient')
 
 " pretty things
 call minpac#add('itchyny/lightline.vim')
