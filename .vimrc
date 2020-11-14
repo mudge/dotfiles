@@ -14,9 +14,10 @@ call minpac#add('sentient-lang/vim-sentient')
 " pretty things
 call minpac#add('itchyny/lightline.vim')
 call minpac#add('arcticicestudio/nord-vim')
+call minpac#add('NLKNguyen/papercolor-theme')
 
 " editing
-call minpac#add('w0rp/ale')
+call minpac#add('dense-analysis/ale')
 call minpac#add('godlygeek/tabular')
 call minpac#add('tpope/vim-commentary')
 call minpac#add('tpope/vim-endwise')
@@ -78,9 +79,15 @@ let mapleader = ","
 " no line numbers when exporting HTML
 let g:html_number_lines = 0
 
+let g:ale_ruby_rubocop_executable = 'bundle'
 let g:ale_fixers = {
-\  'javascript': ['eslint'],
+\  'css': ['prettier'],
+\  'scss': ['prettier'],
+\  'javascript': ['prettier'],
+\  'javascriptreact': ['prettier'],
+\  'terraform': ['terraform'],
 \}
+let g:ale_fix_on_save = 1
 
 " grep with ripgrep
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
@@ -114,6 +121,10 @@ augroup mudge
   au BufRead,BufNewFile *.sbt set ft=scala
   au BufRead,BufNewFile *.json set ft=javascript
   au BufRead,BufNewFile *.lalrpop set ft=rust
+
+  " Enable spellchecking for Markdown and commit messages
+  autocmd BufRead,BufNewFile *.markdown,*.md setlocal spell spelllang=en_gb
+  autocmd FileType gitcommit setlocal spell spelllang=en_gb
 augroup END
 
 " strip trailing whitespace
@@ -122,5 +133,5 @@ function! StripWhitespace()
 endfunction
 map <leader>s :call StripWhitespace()<CR>
 
-set bg=dark
-colorscheme nord
+set bg=light
+colorscheme PaperColor

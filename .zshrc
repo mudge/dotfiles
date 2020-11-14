@@ -11,8 +11,9 @@ setopt prompt_subst
 PROMPT="%{%F{yellow}%}%~%{%f%}> "
 RPROMPT='%{%F{red}%}${vcs_info_msg_0_}%{%f%}'
 
-# Avoid shelling out to `hub alias` and set up an alias directly
-alias git=hub
+setopt hist_ignore_all_dups
+HISTSIZE=1000
+SAVEHIST=1000
 
 export CLICOLOR="Yes" EDITOR="vim" FZF_DEFAULT_COMMAND="rg --files --hidden --no-ignore-vcs"
 
@@ -28,3 +29,10 @@ add-zsh-hook precmd chnode_auto
 # Use arrow keys with a partially completed command to search history
 bindkey '^[[A' history-beginning-search-backward
 bindkey '^[[B' history-beginning-search-forward
+
+# Enable autocompletion
+autoload -Uz compinit
+compinit -C
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/terraform terraform
